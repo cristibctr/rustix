@@ -74,12 +74,10 @@ impl SocketAddrUnix {
     ///  - [Linux]
     ///
     /// [Linux]: https://www.man7.org/linux/man-pages/man7/unix.7.html
-    #[cfg(linux_kernel)]
     #[inline]
     pub fn new_unnamed() -> Self {
         Self {
             unix: Self::init(),
-            #[cfg(not(any(bsd, target_os = "haiku")))]
             len: offsetof_sun_path() as _,
         }
     }
@@ -114,7 +112,6 @@ impl SocketAddrUnix {
     }
 
     /// `true` if the socket address is unnamed.
-    #[cfg(linux_kernel)]
     #[inline]
     pub fn is_unnamed(&self) -> bool {
         self.bytes() == Some(&[])
@@ -132,7 +129,7 @@ impl SocketAddrUnix {
 
     #[inline]
     fn bytes(&self) -> Option<&[u8]> {
-        let len = self.len() as usize;
+        let len = self.len();
         if len != 0 {
             let bytes = &self.unix.sun_path[..len - offsetof_sun_path()];
             // SAFETY: `from_raw_parts` to convert from `&[c_char]` to `&[u8]`.

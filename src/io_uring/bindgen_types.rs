@@ -11,7 +11,7 @@ pub struct IncompleteArrayField<T>(::core::marker::PhantomData<T>, [T; 0]);
 impl<T> IncompleteArrayField<T> {
     #[inline]
     pub const fn new() -> Self {
-        IncompleteArrayField(::core::marker::PhantomData, [])
+        Self(::core::marker::PhantomData, [])
     }
 
     #[inline]
@@ -50,7 +50,7 @@ pub struct UnionField<T>(::core::marker::PhantomData<T>);
 impl<T> UnionField<T> {
     #[inline]
     pub const fn new() -> Self {
-        UnionField(::core::marker::PhantomData)
+        Self(::core::marker::PhantomData)
     }
 
     #[inline]
@@ -91,7 +91,7 @@ impl<T> ::core::hash::Hash for UnionField<T> {
 }
 
 impl<T> ::core::cmp::PartialEq for UnionField<T> {
-    fn eq(&self, _other: &UnionField<T>) -> bool {
+    fn eq(&self, _other: &Self) -> bool {
         true
     }
 }
