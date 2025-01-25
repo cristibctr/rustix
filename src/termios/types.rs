@@ -1250,6 +1250,7 @@ impl core::fmt::Debug for SpecialCodeIndex {
             #[cfg(any(
                 solarish,
                 all(linux_kernel, any(target_arch = "sparc", target_arch = "sparc64")),
+                target_os = "aix",
                 target_os = "haiku",
             ))]
             Self::VTIME => write!(f, "VTIME/VEOL"),
@@ -1269,6 +1270,7 @@ impl core::fmt::Debug for SpecialCodeIndex {
             #[cfg(not(any(
                 solarish,
                 all(linux_kernel, any(target_arch = "sparc", target_arch = "sparc64")),
+                target_os = "aix",
                 target_os = "haiku",
             )))]
             Self::VEOL => write!(f, "VEOL"),
