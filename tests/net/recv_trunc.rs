@@ -53,7 +53,6 @@ fn net_recv_uninit_trunc() {
     // truncated to 5 bytes.
     assert_eq!(init, b"Hello");
     assert!(uninit.is_empty());
-
     assert_eq!(length, 5);
 }
 

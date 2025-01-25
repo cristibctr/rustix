@@ -24,12 +24,10 @@ use alloc::borrow::ToOwned;
 use alloc::string::String;
 use core::mem::MaybeUninit;
 use core::time::Duration;
+use linux_raw_sys::general::{__kernel_old_timeval, __kernel_sock_timeval};
+use linux_raw_sys::net::{IPV6_MULTICAST_IF, IP_MULTICAST_IF};
 #[cfg(target_os = "linux")]
 use linux_raw_sys::xdp::{xdp_mmap_offsets, xdp_statistics, xdp_statistics_v1};
-use linux_raw_sys::{
-    general::{__kernel_old_timeval, __kernel_sock_timeval},
-    net::{IPV6_MULTICAST_IF, IP_MULTICAST_IF},
-};
 #[cfg(target_arch = "x86")]
 use {
     crate::backend::conv::{slice_just_addr, x86_sys},
