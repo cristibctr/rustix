@@ -324,9 +324,9 @@ impl DirEntry {
         &self.name
     }
 
-    /// Returns the "offset" of this directory entry. Note that this is not
-    /// a true numerical offset but an opaque cookie that identifies a
-    /// position in the given stream.
+    /// Returns the “offset” of this directory entry. Note that this is not
+    /// a true numerical offset but an opaque cookie that identifies a position
+    /// in the given stream.
     #[cfg(any(
         linux_like,
         solarish,

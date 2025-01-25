@@ -946,7 +946,7 @@ pub type StatFs = c::statfs;
 #[cfg(linux_like)]
 pub type StatFs = c::statfs64;
 
-/// `fsid_t` for use with `StatFs`.
+/// `fsid_t` for use with [`StatFs`].
 #[cfg(not(any(
     solarish,
     target_os = "espidf",

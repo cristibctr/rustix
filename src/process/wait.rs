@@ -328,6 +328,7 @@ pub enum WaitId<'a> {
 ///
 /// [POSIX]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/wait.html
 /// [Linux]: https://man7.org/linux/man-pages/man2/waitpid.2.html
+#[doc(alias = "wait4")]
 #[cfg(not(target_os = "wasi"))]
 #[inline]
 pub fn waitpid(pid: Option<Pid>, waitopts: WaitOptions) -> io::Result<Option<(Pid, WaitStatus)>> {

@@ -1586,7 +1586,8 @@ pub mod xdp {
     }
 
     // Constant needs to be cast because bindgen does generate a u32 but the struct
-    // expects a u16. https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L15-L44
+    // expects a u16.
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L15-L44>
     bitflags! {
         /// `XDP_*` constants for use in [`SocketAddrXdp`].
         #[repr(transparent)]
@@ -1631,7 +1632,7 @@ pub mod xdp {
     /// Used to bind to XDP socket.
     ///
     /// Not ABI compatible with `struct sockaddr_xdp`
-    // https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L38-L44
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L38-L44>
     #[derive(Clone, PartialEq, PartialOrd, Eq, Ord, Hash, Debug)]
     pub struct SocketAddrXdp {
         /// Flags.
@@ -1715,7 +1716,7 @@ pub mod xdp {
     /// Used to mmap rings from kernel.
     ///
     /// Not ABI compatible with `struct xdp_ring_offset`.
-    // https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L49-L54
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L49-L54>
     #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
     pub struct XdpRingOffset {
         /// Producer offset.
@@ -1733,7 +1734,7 @@ pub mod xdp {
     /// XDP mmap offsets.
     ///
     /// Not ABI compatible with `struct xdp_mmap_offsets`
-    // https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L56-L61
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L56-L61>
     #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
     pub struct XdpMmapOffsets {
         /// Rx ring offsets.
@@ -1749,7 +1750,7 @@ pub mod xdp {
     /// XDP umem registration.
     ///
     /// `struct xdp_umem_reg`
-    // https://github.com/torvalds/linux/blob/v6.8/include/uapi/linux/if_xdp.h#L79-L86
+    // <https://github.com/torvalds/linux/blob/v6.8/include/uapi/linux/if_xdp.h#L79-L86>
     #[repr(C)]
     #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
     pub struct XdpUmemReg {
@@ -1765,7 +1766,7 @@ pub mod xdp {
         ///
         /// Requires kernel version 5.4.
         pub flags: XdpUmemRegFlags,
-        /// AF_XDP TX metadata length
+        /// `AF_XDP` TX metadata length
         ///
         /// Requires kernel version 6.8.
         pub tx_metadata_len: u32,
@@ -1774,7 +1775,7 @@ pub mod xdp {
     /// XDP statistics.
     ///
     /// Not ABI compatible with `struct xdp_statistics`
-    // https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L81-L88
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L81-L88>
     #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
     pub struct XdpStatistics {
         /// Rx dropped.
@@ -1801,7 +1802,7 @@ pub mod xdp {
     ///
     /// Requires kernel version 5.3.
     /// `struct xdp_options`
-    // https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L90-L92
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L90-L92>
     #[repr(C)]
     #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
     pub struct XdpOptions {
@@ -1812,7 +1813,7 @@ pub mod xdp {
     /// XDP rx/tx frame descriptor.
     ///
     /// `struct xdp_desc`
-    // https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L109-L113
+    // <https://github.com/torvalds/linux/blob/v6.6/include/uapi/linux/if_xdp.h#L109-L113>
     #[repr(C)]
     #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
     pub struct XdpDesc {
@@ -1826,11 +1827,11 @@ pub mod xdp {
 
     #[cfg(target_os = "linux")]
     bitflags! {
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
         /// `XDP_*` constants for use in [`XdpDesc`].
         ///
         /// Requires kernel version 6.6.
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
         pub struct XdpDescOptions: u32 {
             /// `XDP_PKT_CONTD`
             const XDP_PKT_CONTD = bitcast!(c::XDP_PKT_CONTD);
