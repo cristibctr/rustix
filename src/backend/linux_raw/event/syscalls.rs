@@ -176,7 +176,6 @@ pub(crate) fn epoll_del(epfd: BorrowedFd<'_>, fd: BorrowedFd<'_>) -> io::Result<
     }
 }
 
-#[cfg(feature = "alloc")]
 #[inline]
 pub(crate) fn epoll_wait(
     epfd: BorrowedFd<'_>,

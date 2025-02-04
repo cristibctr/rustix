@@ -526,7 +526,6 @@ pub(crate) fn epoll_del(epoll: BorrowedFd<'_>, source: BorrowedFd<'_>) -> io::Re
 }
 
 #[inline]
-#[cfg(feature = "alloc")]
 #[cfg(any(linux_kernel, target_os = "illumos", target_os = "redox"))]
 pub(crate) fn epoll_wait(
     epoll: BorrowedFd<'_>,
