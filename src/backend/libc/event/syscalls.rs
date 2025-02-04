@@ -27,7 +27,7 @@ use crate::utils::as_ptr;
 #[cfg(any(
     all(feature = "alloc", bsd),
     solarish,
-    all(feature = "alloc", any(linux_kernel, target_os = "redox")),
+    all(any(linux_kernel, target_os = "redox")),
 ))]
 use core::mem::MaybeUninit;
 #[cfg(any(

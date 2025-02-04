@@ -15,7 +15,6 @@ use crate::event::{epoll, EventfdFlags, FdSetElement, PollFd, Timespec};
 use crate::fd::{BorrowedFd, OwnedFd};
 use crate::io;
 use crate::utils::{as_mut_ptr, option_as_ptr};
-#[cfg(feature = "alloc")]
 use core::mem::MaybeUninit;
 use core::ptr::null_mut;
 use linux_raw_sys::general::{kernel_sigset_t, EPOLL_CTL_ADD, EPOLL_CTL_DEL, EPOLL_CTL_MOD};
