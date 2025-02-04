@@ -66,7 +66,7 @@ mod tests {
     #[test]
     fn test_split_init_empty() {
         unsafe {
-            let (init, uninit) = split_init(&mut [], 0);
+            let (init, uninit) = split_init::<u8>(&mut [], 0);
             assert!(init.is_empty());
             assert!(uninit.is_empty());
         }
