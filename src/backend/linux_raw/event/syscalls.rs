@@ -5,7 +5,6 @@
 //! See the `rustix::backend` module documentation for details.
 #![allow(unsafe_code, clippy::undocumented_unsafe_blocks)]
 
-#[cfg(feature = "alloc")]
 use crate::backend::c;
 use crate::backend::conv::{
     by_ref, c_int, c_uint, opt_ref, ret, ret_c_int, ret_error, ret_owned_fd, ret_usize, size_of,
