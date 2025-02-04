@@ -4,7 +4,6 @@ use crate::backend::c;
 #[cfg(any(linux_kernel, solarish, target_os = "redox"))]
 use crate::backend::conv::ret;
 use crate::backend::conv::ret_c_int;
-#[cfg(feature = "alloc")]
 #[cfg(any(linux_kernel, target_os = "illumos", target_os = "redox"))]
 use crate::backend::conv::ret_u32;
 #[cfg(solarish)]
