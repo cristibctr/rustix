@@ -58,6 +58,7 @@ bitflags! {
             linux_kernel,
             target_os = "freebsd",
             target_os = "fuchsia",
+            target_arch = "wasm32"
         ))]
         const EMPTY_PATH = bitcast!(c::AT_EMPTY_PATH);
 
@@ -290,6 +291,7 @@ bitflags! {
             target_os = "freebsd",
             target_os = "fuchsia",
             target_os = "redox",
+            target_arch = "wasm32"
         ))]
         const PATH = bitcast!(c::O_PATH);
 

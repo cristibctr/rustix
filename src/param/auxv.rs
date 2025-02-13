@@ -36,7 +36,7 @@ pub fn page_size() -> usize {
 ///
 /// [POSIX]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/sysconf.html
 /// [Linux]: https://man7.org/linux/man-pages/man3/sysconf.3.html
-#[cfg(not(any(target_os = "vita", target_os = "wasi")))]
+#[cfg(not(any(target_os = "vita", all(target_os = "wasi", target_env = "p2"))))]
 #[inline]
 #[doc(alias = "_SC_CLK_TCK")]
 pub fn clock_ticks_per_second() -> u64 {

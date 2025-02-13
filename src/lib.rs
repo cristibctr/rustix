@@ -279,7 +279,7 @@ pub mod shm;
 #[cfg_attr(docsrs, doc(cfg(feature = "stdio")))]
 pub mod stdio;
 #[cfg(feature = "system")]
-#[cfg(not(any(windows, target_os = "wasi")))]
+#[cfg(not(any(windows, all(target_os = "wasi", target_env = "p2"))))]
 #[cfg_attr(docsrs, doc(cfg(feature = "system")))]
 pub mod system;
 #[cfg(not(any(windows, target_os = "vita")))]

@@ -145,7 +145,7 @@ pub(crate) mod pty;
 #[cfg(feature = "rand")]
 pub(crate) mod rand;
 #[cfg(not(windows))]
-#[cfg(not(target_os = "wasi"))]
+#[cfg(not(all(target_os = "wasi", target_env = "p2")))]
 #[cfg(feature = "system")]
 pub(crate) mod system;
 #[cfg(not(any(windows, target_os = "vita")))]
