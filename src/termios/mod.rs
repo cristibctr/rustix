@@ -8,20 +8,20 @@
 //! [`Termios::set_input_speed`], and it will simply fail if the speed is not
 //! supported by the platform.
 
-#[cfg(not(any(target_os = "espidf", target_os = "haiku", target_os = "wasi")))]
+#[cfg(any(not(any(target_os = "espidf", target_os = "haiku", target_os = "wasi")), target_vendor = "wasmer"))]
 mod ioctl;
-#[cfg(not(target_os = "wasi"))]
+#[cfg(any(not(target_os = "wasi"), target_vendor = "wasmer"))]
 mod tc;
 #[cfg(not(windows))]
 mod tty;
-#[cfg(not(any(target_os = "espidf", target_os = "wasi")))]
+#[cfg(any(not(any(target_os = "espidf", target_os = "wasi")), target_vendor = "wasmer"))]
 mod types;
 
-#[cfg(not(any(target_os = "espidf", target_os = "haiku", target_os = "wasi")))]
+#[cfg(any(not(any(target_os = "espidf", target_os = "haiku", target_os = "wasi")), target_vendor = "wasmer"))]
 pub use ioctl::*;
-#[cfg(not(target_os = "wasi"))]
+#[cfg(any(not(target_os = "wasi"), target_vendor = "wasmer"))]
 pub use tc::*;
 #[cfg(not(windows))]
 pub use tty::*;
-#[cfg(not(any(target_os = "espidf", target_os = "wasi")))]
+#[cfg(any(not(any(target_os = "espidf", target_os = "wasi")), target_vendor = "wasmer"))]
 pub use types::*;
