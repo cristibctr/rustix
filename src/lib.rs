@@ -279,7 +279,7 @@ pub mod shm;
 #[cfg_attr(docsrs, doc(cfg(feature = "stdio")))]
 pub mod stdio;
 #[cfg(feature = "system")]
-#[cfg(not(any(windows, all(target_os = "wasi", target_env = "p2"))))]
+#[cfg(not(any(windows, all(target_os = "wasi", not(target_vendor = "wasmer")))))]
 #[cfg_attr(docsrs, doc(cfg(feature = "system")))]
 pub mod system;
 #[cfg(not(any(windows, target_os = "vita")))]
@@ -349,7 +349,7 @@ pub(crate) mod path;
 #[cfg(not(any(windows, target_os = "espidf")))]
 #[cfg(any(feature = "thread", feature = "time", target_arch = "x86"))]
 mod clockid;
-#[cfg(not(any(windows, target_os = "wasi")))]
+#[cfg(any(target_vendor = "wasmer", not(any(windows, target_os = "wasi"))))]
 #[cfg(any(
     feature = "procfs",
     feature = "process",

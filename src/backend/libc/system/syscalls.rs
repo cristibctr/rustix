@@ -2,7 +2,7 @@
 
 use super::types::RawUname;
 use crate::backend::c;
-#[cfg(not(all(target_os = "wasi", target_env = "p2")))]
+#[cfg(not(all(target_os = "wasi", not(target_vendor = "wasmer"))))]
 use crate::backend::conv::ret_infallible;
 #[cfg(target_os = "linux")]
 use crate::system::RebootCommand;
@@ -20,7 +20,7 @@ use {
 )))]
 use {crate::backend::conv::ret, crate::io};
 
-#[cfg(not(all(target_os = "wasi", target_env = "p2")))]
+#[cfg(not(all(target_os = "wasi", not(target_vendor = "wasmer"))))]
 #[inline]
 pub(crate) fn uname() -> RawUname {
     let mut uname = MaybeUninit::<RawUname>::uninit();

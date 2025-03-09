@@ -14,7 +14,7 @@ use crate::backend::conv::ret_discarded_char_ptr;
     target_os = "fuchsia",
     target_os = "redox",
     target_os = "vita",
-    all(target_os = "wasi", target_env = "p2")
+    all(target_os = "wasi", not(target_vendor = "wasmer"))
 )))]
 use crate::backend::conv::ret_infallible;
 #[cfg(not(target_os = "wasi"))]

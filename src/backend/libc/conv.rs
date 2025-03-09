@@ -55,7 +55,7 @@ pub(super) fn nonnegative_ret(raw: c::c_int) -> io::Result<()> {
     }
 }
 
-#[cfg(not(any(windows, all(target_os = "wasi", target_env = "p2"))))]
+#[cfg(not(any(windows, all(target_os = "wasi", not(target_vendor = "wasmer")))))]
 #[inline]
 pub(super) unsafe fn ret_infallible(raw: c::c_int) {
     debug_assert_eq!(raw, 0, "unexpected error: {:?}", io::Errno::last_os_error());

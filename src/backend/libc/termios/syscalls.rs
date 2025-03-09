@@ -187,7 +187,7 @@ pub(crate) fn tcsetpgrp(fd: BorrowedFd<'_>, pid: Pid) -> io::Result<()> {
     unsafe { ret(c::tcsetpgrp(borrowed_fd(fd), pid.as_raw_nonzero().get())) }
 }
 
-#[cfg(not(any(target_os = "espidf", target_os = "wasi")))]
+#[cfg(not(any(target_os = "espidf", all(target_os = "wasi", not(target_vendor = "wasmer")))))]
 pub(crate) fn tcsetattr(
     fd: BorrowedFd<'_>,
     optional_actions: OptionalActions,
@@ -325,7 +325,7 @@ fn tcsetattr_fallback(
     unsafe { ret(c::ioctl(borrowed_fd(fd), request as _, termios2)) }
 }
 
-#[cfg(not(target_os = "wasi"))]
+#[cfg(any(not(target_os = "wasi"), target_vendor = "wasmer"))]
 pub(crate) fn tcsendbreak(fd: BorrowedFd<'_>) -> io::Result<()> {
     unsafe { ret(c::tcsendbreak(borrowed_fd(fd), 0)) }
 }
