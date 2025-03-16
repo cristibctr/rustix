@@ -22,7 +22,7 @@ pub use crate::pid::Pid;
 /// [POSIX `tcgetattr`]: https://pubs.opengroup.org/onlinepubs/9799919799/functions/tcgetattr.html
 /// [Linux `ioctl_tty`]: https://man7.org/linux/man-pages/man4/tty_ioctl.4.html
 /// [Linux `termios`]: https://man7.org/linux/man-pages/man3/termios.3.html
-#[cfg(not(any(windows, target_os = "espidf", target_os = "wasi")))]
+#[cfg(not(any(windows, target_os = "espidf", all(target_os = "wasi", not(target_vendor = "wasmer")))))]
 #[inline]
 #[doc(alias = "TCGETS")]
 #[doc(alias = "TCGETS2")]
@@ -39,7 +39,7 @@ pub fn tcgetattr<Fd: AsFd>(fd: Fd) -> io::Result<Termios> {
 ///  - [Linux]
 ///
 /// [Linux]: https://man7.org/linux/man-pages/man4/tty_ioctl.4.html
-#[cfg(not(any(windows, target_os = "espidf", target_os = "wasi")))]
+#[cfg(not(any(windows, target_os = "espidf", all(target_os = "wasi", not(target_vendor = "wasmer")))))]
 #[inline]
 #[doc(alias = "TIOCGWINSZ")]
 pub fn tcgetwinsize<Fd: AsFd>(fd: Fd) -> io::Result<Winsize> {

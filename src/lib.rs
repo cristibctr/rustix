@@ -228,7 +228,7 @@ pub mod mm;
 #[cfg(feature = "mount")]
 #[cfg_attr(docsrs, doc(cfg(feature = "mount")))]
 pub mod mount;
-#[cfg(not(any(target_os = "redox", target_os = "wasi")))]
+#[cfg(any(not(any(target_os = "redox", target_os = "wasi")), target_vendor = "wasmer"))]
 #[cfg(feature = "net")]
 #[cfg_attr(docsrs, doc(cfg(feature = "net")))]
 pub mod net;
